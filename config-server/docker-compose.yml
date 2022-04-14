@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    image: 'allteran/mirage-config-server:v0.1'
+    container_name: mirage-config-server
+    ports:
+      - 8888:8888
+
