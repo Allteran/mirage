@@ -38,6 +38,11 @@
 			<version>3.0.3</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+		</dependency>
+
 		<!--Cloud dependencies -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

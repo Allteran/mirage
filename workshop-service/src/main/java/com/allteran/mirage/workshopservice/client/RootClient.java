@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "root-service")
 public interface RootClient {
-    @GetMapping("/api/v1/root/user/{id}")
+    @GetMapping("/api/v1/root-service/user/name/{id}")
     String getUserFullName(@PathVariable("id") String id);
+
+    @GetMapping("/api/v1/root-service/user/testdata")
+    String getTestData();
 }
 

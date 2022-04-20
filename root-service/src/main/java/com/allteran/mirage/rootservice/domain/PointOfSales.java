@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class PointOfSales {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     private String city;
     private String address;
 
@@ -24,4 +24,8 @@ public class PointOfSales {
 //    @JsonDeserialize(using = POSTypeDeserializer.class)
     @JoinColumn(name = "type_id")
     private POSType type;
+
+    @ManyToOne
+    @JoinColumn(name = "dealer_id")
+    private Dealer dealer;
 }
