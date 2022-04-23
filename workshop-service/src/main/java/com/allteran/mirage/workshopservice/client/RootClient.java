@@ -11,5 +11,11 @@ public interface RootClient {
 
     @GetMapping("/api/v1/root-service/user/testdata")
     String getTestData();
+
+    @GetMapping("/api/v1/root-service/user/all/adm")
+    String getAdminData();
+
+    @GetMapping("/api/v1/root-service/user/all/usr")
+    String getUsrData();
 }
 

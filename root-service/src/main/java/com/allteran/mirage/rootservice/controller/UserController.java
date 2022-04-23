@@ -4,6 +4,8 @@ import com.allteran.mirage.rootservice.domain.Role;
 import com.allteran.mirage.rootservice.domain.User;
 import com.allteran.mirage.rootservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,8 +62,32 @@ public class UserController {
 
     @GetMapping("testdata")
     public String getTestData() {
-        return "You got test data from root-service";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String printResult = String.format("Authentication.toString = %s", authentication.toString());
+        System.out.println(printResult);
+
+        Object principal = authentication.getPrincipal();
+        printResult = printResult +String.format("Principal.toString = %s", principal.toString());
+        System.out.println(printResult);
+
+        return "You got test data from root-service\n" + printResult;
     }
+
+    @GetMapping("all/adm")
+    public String getDataForAdmin() {
+        return "You are ADMIN and you've reached data";
+    }
+
+    @GetMapping("all/usr")
+    public String getDataForUser() {
+        return "You are USER and you've reached data";
+    }
+
+    @GetMapping("all/eng")
+    public String getDataForEngineer() {
+        return "You are ENGINEER and you've reached data";
+    }
+
 
     //TODO: updateUser, updateProfile, delete
 }

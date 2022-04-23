@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres:
+      image: 'postgres:13.1-alpine'
+      container_name: mirage_postgres_db
+      volumes:
+        - ./pg_data:/var/lib/postgresql/data
+      ports:
+        - 5454:5432
+      environment:
+        POSTGRES_DB: mirage_root_db
+        POSTGRES_USER: mirage_root_admin
+        POSTGRES_PASSWORD: 123456789
+  keycloak:
+      image: quay.io/keycloak/keycloak:legacy
+      container_name: mirage_keycloak-v1
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: mirage_root_db
+        DB_USER: mirage_root_admin
+        DB_SCHEMA: public
+        DB_PASSWORD: 123456789
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+      ports:
+        - 8180:8080
+      depends_on:
+        - postgres

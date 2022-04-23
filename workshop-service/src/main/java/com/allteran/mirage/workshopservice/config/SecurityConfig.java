@@ -41,12 +41,4 @@ public class SecurityConfig{
         };
     }
 
-    //	@Bean
-//	public RequestInterceptor requestTokenBearerInterceptor() {
-//		return requestTemplate -> {
-//			JwtAuthenticationToken token = (JwtAuthenticationToken) SecurityContextHolder.getContext()
-//					.getAuthentication();
-//			requestTemplate.header("Authorization", "Bearer " + token.getToken().getTokenValue());
-//		};
-//	}
 }
