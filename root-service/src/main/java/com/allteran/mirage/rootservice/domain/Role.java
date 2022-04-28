@@ -1,5 +1,12 @@
 package com.allteran.mirage.rootservice.domain;
 
-public enum Role {
-    USER, MANAGER, ENGINEER, HEAD_ENGINEER, ADMINISTRATOR;
+import org.springframework.security.core.GrantedAuthority;
+
+public enum Role implements GrantedAuthority {
+    USER, MANAGER, ENGINEER, HEAD_ENGINEER, ADMIN;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }

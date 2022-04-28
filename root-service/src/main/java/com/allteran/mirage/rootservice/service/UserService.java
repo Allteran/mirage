@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.security.RolesAllowed;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
@@ -48,7 +47,7 @@ public class UserService {
     public User createAdmin(User admin) {
         admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(Role.ADMINISTRATOR);
+        roles.add(Role.ADMIN);
         roles.add(Role.MANAGER);
         roles.add(Role.HEAD_ENGINEER);
         roles.add(Role.ENGINEER);

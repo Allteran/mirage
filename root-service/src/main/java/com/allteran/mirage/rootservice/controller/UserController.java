@@ -4,10 +4,12 @@ import com.allteran.mirage.rootservice.domain.Role;
 import com.allteran.mirage.rootservice.domain.User;
 import com.allteran.mirage.rootservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -74,11 +76,13 @@ public class UserController {
     }
 
     @GetMapping("all/adm")
+    @RolesAllowed("admin")
     public String getDataForAdmin() {
         return "You are ADMIN and you've reached data";
     }
 
     @GetMapping("all/usr")
+    @RolesAllowed("user")
     public String getDataForUser() {
         return "You are USER and you've reached data";
     }
@@ -90,4 +94,5 @@ public class UserController {
 
 
     //TODO: updateUser, updateProfile, delete
+
 }
